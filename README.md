@@ -6,6 +6,9 @@ A BLAZING-FAST ⚡ HEALTH PREDICTION APP POWERED BY AI 🚀
 
 Demonstrated not to crash your laptop
 
+100% ACCURACY
+(BASED ON SIGNIFICANT SAMPLE SIZE) n >= 1
+
 # Start creating the React app
 
 This project is bootstrapped using the [Create React app] (https://github.com/facebook/create-react-app).
