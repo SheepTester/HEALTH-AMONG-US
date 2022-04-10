@@ -1,6 +1,12 @@
+#THiS PROGAM ENHANCES OUR AI MODEL BY USING NON AI TECHNIQUES
+#definitely DOES NOT use RAND library
+
+
+
+#no don't pay attention to this besties
 import random
 
-thing = []
+thing = [] #just a thing we're using 
 with open("wordlist.txt",'r') as file:
    
         # reading each line    
@@ -15,17 +21,17 @@ with open("wordlist.txt",'r') as file:
     #learned from geeks4geeks 
 
 
-word = random.choice(thing)
+word = random.choice(thing) #this is not the random library
 
-number = random.uniform(-1,1)
+number = random.uniform(-1,1) #neither is this 
 
 statement = "hi" #dummy value
-
+#NON AI ENHANCEMENT RIGHT HERE 
 if(number > 0):
     statement = "which means it is good for you."
 if(number < 0):
     statement = "which means it is bad for you."
 else:
     statement = "which is neutral for your health."
-
+#incredible so smart 
 print(word, "has a health value of ", number,statement)
