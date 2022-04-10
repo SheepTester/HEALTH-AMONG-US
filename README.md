@@ -8,4 +8,4 @@ Demonstrated not to crash your laptop
 
 
 100% ACCURACY 
-(BASED ON SIGNIFICANT SAMPLE SIZE)
+(BASED ON SIGNIFICANT SAMPLE SIZE) n=1
