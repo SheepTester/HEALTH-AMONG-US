@@ -35,14 +35,17 @@ number = random.uniform(-1,1) #neither is this
 statement = "hi" #dummy value
 
 #incredible so smart 
-print(word, "has a health value of ", number,)
 
+#look at us using flash
+
+#slayinggggg SLADYYYYYYYYYYY
 from flask import Flask
 app = Flask(__name__)
   
-@app.route('/<message>/')
+@app.route('/<message>/') #takes in some sort of input very very very fun 
 def hello_name(message):
-   return message + " has a value of" + str(number)
+    #returns a message 
+   return message + " has a value of " + str(number)
   
 if __name__ == '__main__':
    app.run()
