@@ -21,7 +21,7 @@ function App () {
                 setList(list.filter((_, j) => i !== j))
               }}
             >
-              &times;
+              Done
             </button>
             <div className='todo-item'>{content}</div>
           </div>
@@ -38,11 +38,12 @@ function App () {
         <input
           className='add-input'
           type='text'
-          placeholder='What other tasks do you need to complete as a Crewmate?'
+          placeholder='Other Crewmate tasks...'
           value={toAdd}
           onChange={e => {
             setToAdd(e.currentTarget.value)
           }}
+          autoFocus
         />
         <button className='add-btn'>Add</button>
       </form>
