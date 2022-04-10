@@ -27,11 +27,6 @@ with open("wordlist.txt",'r') as file:
     #reads a file with words and prints each word to an array
     #learned from geeks4geeks 
 
-
-word = random.choice(thing) #this is not the random library
-
-number = random.uniform(-1,1) #neither is this 
-
 statement = "hi" #dummy value
 
 #incredible so smart 
@@ -40,12 +35,21 @@ statement = "hi" #dummy value
 
 #slayinggggg SLADYYYYYYYYYYY
 from flask import Flask
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
   
 @app.route('/<message>/') #takes in some sort of input very very very fun 
+@cross_origin()
 def hello_name(message):
+    random.seed(message)
+
+    word = random.choice(thing) #this is not the random library
+
+    number = random.uniform(-1,1) #neither is this 
     #returns a message 
-   return message + " has a value of " + str(number)
+    return message + " has a value of " + str(number)
   
 if __name__ == '__main__':
    app.run()
