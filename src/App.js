@@ -14,31 +14,32 @@ function App () {
     <div className='list-wrapper'>
       <div className='list'>
         {list.map((content, i) => (
-          <div className='list-item' key={i}>
-            <button
-              class='remove'
-              onClick={() => {
-                setList(list.filter((_, j) => i !== j))
-              }}
-            >
-              Done
-            </button>
+          <button
+            className='list-item'
+            key={i}
+            onClick={() => {
+              setList(list.filter((_, j) => i !== j))
+            }}
+          >
+            <div className='bubble'></div>
             <div className='todo-item'>{content}</div>
-          </div>
+          </button>
         ))}
       </div>
       <form
         className='add-item-wrapper'
         onSubmit={e => {
-          setList([...list, toAdd])
-          setToAdd('')
+          if (toAdd.trim()) {
+            setList([...list, toAdd.trim()])
+            setToAdd('')
+          }
           e.preventDefault()
         }}
       >
         <input
           className='add-input'
           type='text'
-          placeholder='Other Crewmate tasks...'
+          placeholder='Add Crewmate task'
           value={toAdd}
           onChange={e => {
             setToAdd(e.currentTarget.value)
