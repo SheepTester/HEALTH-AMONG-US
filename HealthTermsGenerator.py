@@ -36,3 +36,13 @@ statement = "hi" #dummy value
 
 #incredible so smart 
 print(word, "has a health value of ", number,)
+
+from flask import Flask
+app = Flask(__name__)
+  
+@app.route('/<message>/')
+def hello_name(message):
+   return message + " has a value of" + str(number)
+  
+if __name__ == '__main__':
+   app.run()
