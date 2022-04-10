@@ -6,6 +6,13 @@
 #no don't pay attention to this besties
 import random
 
+msg = "Presenting Health Among Us"
+print(msg)
+msg2 = "made by a couple of coding crewmates"
+print(msg2)
+msg3 = " ~ thank you and please enjoy!! ~"
+print(msg3)
+
 thing = [] #just a thing we're using 
 with open("wordlist.txt",'r') as file:
    
