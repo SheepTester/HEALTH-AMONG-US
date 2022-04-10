@@ -17,6 +17,7 @@ body {
     ),
     linear-gradient(45deg, #ff00c1, #7033ff);
   color: rgba(255, 255, 255, 0.8);
+  background-attachment: fixed;
 }
 
 button,
@@ -45,6 +46,8 @@ button:not(:disabled) {
   background-color: #14151a;
   border-radius: 20px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  margin: 20px;
 }
 
 .list-item {
@@ -52,16 +55,25 @@ button:not(:disabled) {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding: 20px;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
-.remove {
+.bubble {
   flex: none;
   border: 3px solid white;
   border-radius: 50%;
   font-size: 0;
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   box-sizing: border-box;
   margin-right: 20px;
+}
+.todo-item {
+  text-align: left;
+}
+.list-item:hover .todo-item {
+  opacity: 0.8;
+  text-decoration: line-through;
 }
 
 .add-item-wrapper {
@@ -73,13 +85,11 @@ button:not(:disabled) {
 }
 .add-input:focus {
   background-color: rgba(255, 255, 255, 0.05);
-  border-bottom-left-radius: 20px;
   outline: none;
 }
 .add-btn {
   padding: 20px;
   background-image: linear-gradient(45deg, #ff00c1, #7033ff);
-  border-bottom-right-radius: 20px;
 }
 .add-btn:hover {
   background-color: white;
