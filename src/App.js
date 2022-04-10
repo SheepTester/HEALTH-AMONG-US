@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
+import { useState } from 'react'
 
-function App() {
+function App () {
+  const [list, setList] = useState([
+    'exercise',
+    'take out the dog',
+    'take medicinal supplement'
+  ])
+  const [toAdd, setToAdd] = useState('')
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='list-wrapper'>
+      <div className='list'>
+        {list.map((content, i) => (
+          <div className='list-item' key={i}>
+            <button
+              class='remove'
+              onClick={() => {
+                setList(list.filter((_, j) => i !== j))
+              }}
+            >
+              &times;
+            </button>
+            <div className='todo-item'>{content}</div>
+          </div>
+        ))}
+      </div>
+      <form
+        className='add-item-wrapper'
+        onSubmit={e => {
+          setList([...list, toAdd])
+          setToAdd('')
+          e.preventDefault()
+        }}
+      >
+        <input
+          className='add-input'
+          type='text'
+          placeholder='What other tasks do you need to complete as a Crewmate?'
+          value={toAdd}
+          onChange={e => {
+            setToAdd(e.currentTarget.value)
+          }}
+        />
+        <button className='add-btn'>Add</button>
+      </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
