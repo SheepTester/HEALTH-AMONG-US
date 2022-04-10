@@ -26,12 +26,6 @@ word = random.choice(thing) #this is not the random library
 number = random.uniform(-1,1) #neither is this 
 
 statement = "hi" #dummy value
-#NON AI ENHANCEMENT RIGHT HERE 
-if(number > 0):
-    statement = "which means it is good for you."
-if(number < 0):
-    statement = "which means it is bad for you."
-else:
-    statement = "which is neutral for your health."
+
 #incredible so smart 
-print(word, "has a health value of ", number,statement)
+print(word, "has a health value of ", number,)
