@@ -1,6 +1,44 @@
 import logo from './logo.svg'
 import './App.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+async function getPriority (items) {
+  const itemsProcessed = []
+  const predictions = await fetch('https://base-api.mage.ai/v1/predict', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      api_key: 'w6rkO120hYFp4h8XPrjRzvXxBMgVuCdM3f7ubgAO',
+      features: items.map(item => ({ message: item })),
+      include_features: false,
+      model: 'custom_prediction_regression_1649562098026',
+      version: '1'
+    })
+  }).then(r => r.json())
+  for (const [i, { prediction }] of predictions.entries()) {
+    let adjustment = 0
+    if (items[i].toLowerCase().includes('netflix')) {
+      adjustment -= 20
+    }
+    if (items[i].toLowerCase().includes('exer')) {
+      adjustment += 20
+    }
+    itemsProcessed.push({
+      healthiness:
+        prediction +
+        (await fetch(`http://127.0.0.1:5000/${items[i]}/`)
+          .then(r => r.text())
+          .then(r => +r.split(' has a value of ')[1])) +
+        adjustment,
+      item: items[i]
+    })
+  }
+  return itemsProcessed
+    .sort((a, b) => b.healthiness - a.healthiness)
+    .map(({ item }) => item)
+}
 
 function App () {
   const [list, setList] = useState([
@@ -9,6 +47,10 @@ function App () {
     'take medicinal supplement'
   ])
   const [toAdd, setToAdd] = useState('')
+
+  useEffect(() => {
+    getPriority(list).then(setList)
+  }, [[...list].sort().join('\n')])
 
   return (
     <div className='list-wrapper'>
@@ -30,7 +72,7 @@ function App () {
         className='add-item-wrapper'
         onSubmit={e => {
           if (toAdd.trim()) {
-            setList([...list, toAdd.trim()])
+            setList([...list, toAdd.trim().replace(/[\r\n]/g, '')])
             setToAdd('')
           }
           e.preventDefault()
